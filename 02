@@ -1,0 +1,124 @@
+String m1 = "Selecciona una operacion: ";
+String m2 = "Inserta el primer numero: ";
+String m3 = "Inserta el segundo numero: ";
+
+void loop() {
+  Serial.print(m1);
+  while (Serial.available() == 0) {}
+
+  if (Serial.available()) {
+    String Op = Serial.readStringUntil('\n');
+    Serial.println(Op);
+    if (Op == "Suma") {
+      buttonStateE = false;
+      buttonStateF = true;
+      buttonStateG = true;
+    }
+    if (Op == "Resta") {
+      buttonStateE = true;
+      buttonStateF = false;
+      buttonStateG = false;
+    }
+    if (Op == "Multiplicacion") {
+      buttonStateE = true;
+      buttonStateF = false;
+      buttonStateG = true;
+    }
+    if (Op == "Division") {
+      buttonStateE = true;
+      buttonStateF = true;
+      buttonStateG = false;
+    }
+  }
+  if (Op == "Division" ) {
+    Serial.print(m2);
+    while (Serial.available() == 0) {}
+    if (Serial.available()) {
+      String num1 = Serial.readStringUntil('\n');
+      Serial.println(num1);
+      if (num1 == "00") {
+        buttonStateA = false;
+        buttonStateC = false;
+      }
+      if (num1 == "01") {
+        buttonStateA = false;
+        buttonStateC = true;
+      }
+      if (num1 == "10") {
+        buttonStateA = true;
+        buttonStateC = false;
+      }
+      if (num1 == "11") {
+        buttonStateA = true;
+        buttonStateC = true;
+      }
+    }
+    Serial.print(m3);
+    while (Serial.available() == 0) {}
+    if (Serial.available()) {
+      String num2 = Serial.readStringUntil('\n');
+      Serial.println(num2);
+      if (num2 == "00") {
+        buttonStateB = false;
+        buttonStateD = false;
+      }
+      if (num2 == "01") {
+        buttonStateB = false;
+        buttonStateD = true;
+      }
+      if (num2 == "10") {
+        buttonStateB = true;
+        buttonStateD = false;
+      }
+      if (num2 == "11") {
+        buttonStateB = true;
+        buttonStateD = true;
+      }
+    }
+  } else {
+    Serial.print(m2);
+    while (Serial.available() == 0) {}
+    if (Serial.available()) {
+      String num1 = Serial.readStringUntil('\n');
+      Serial.println(num1);
+      if (num1 == "00") {
+        buttonStateA = false;
+        buttonStateB = false;
+      }
+      if (num1 == "01") {
+        buttonStateA = false;
+        buttonStateB = true;
+      }
+      if (num1 == "10") {
+        buttonStateA = true;
+        buttonStateB = false;
+      }
+      if (num1 == "11") {
+        buttonStateA = true;
+        buttonStateB = true;
+      }
+    }
+    Serial.print(m3);
+    while (Serial.available() == 0) {}
+    if (Serial.available()) {
+      String num2 = Serial.readStringUntil('\n');
+      Serial.println(num2);
+      if (num2 == "00") {
+        buttonStateC = false;
+        buttonStateD = false;
+      }
+      if (num2 == "01") {
+        buttonStateC = false;
+        buttonStateD = true;
+      }
+      if (num2 == "10") {
+        buttonStateC = true;
+        buttonStateD = false;
+      }
+      if (num2 == "11") {
+        buttonStateC = true;
+        buttonStateD = true;
+      }
+    }
+  }
+}
